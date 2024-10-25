@@ -1,11 +1,13 @@
 package br.com.fiap.locamail.views.send
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.materialIcon
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -18,14 +20,87 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun SendView() {
+fun SendView(navController: NavController) {
 
+       Column(
+           Modifier
+               .fillMaxSize()
+               .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            Text(
+                text = "Topbar",
+                Modifier.fillMaxWidth(),
+                fontSize = 28.sp,
+            )
+            var destination by remember {
+                mutableStateOf("")
+            }
+            TextField(
+                value = destination,
+                onValueChange = {
+                    destination = it
+                },
+                Modifier.fillMaxWidth(),
+                label = {
+                    Text(text = "Para:")
+                },
+            )
+            var origin by remember {
+                mutableStateOf("")
+            }
+            TextField(
+                value = origin,
+                onValueChange = {
+                    origin = it
+                },
+                Modifier.fillMaxWidth(),
+                label = {
+                    Text(text = "De:")
+                },
+            )
+            var subject by remember {
+                mutableStateOf("")
+            }
+            TextField(
+                value = subject,
+                onValueChange = {
+                    subject = it
+                },
+                Modifier.fillMaxWidth(),
+                label = {
+                    Text(text = "Assunto:")
+                },
+            )
+            var description by remember {
+                mutableStateOf("")
+            }
+            TextField(
+                value = description,
+                onValueChange = {
+                    description = it
+                },
+                Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = 100.dp),
+                label = {
+                    Text(text = "Escrever e-mail...")
+                },
+            )
+            Button(
+                onClick = { /*TODO*/ },
+                Modifier.fillMaxWidth(),
+            ) {
+                Text(text = "Enviar")
+            }
+        }
 
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun SendViewPreview() {
 
@@ -96,10 +171,22 @@ fun SendViewPreview() {
         )
         Button(
             onClick = { /*TODO*/ },
+
+        ) {
+
+            Button(
+                onClick = { /*TODO*/ },
+
+                ) {
+
+        }
+        Button(
+            onClick = { /*TODO*/ },
             Modifier.fillMaxWidth(),
         ) {
             Text(text = "Enviar")
         }
+    }
     }
 }
 
